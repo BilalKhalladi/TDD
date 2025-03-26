@@ -4,26 +4,35 @@ public class Account {
 
     private int balance;
 
-    public Account(){
-
-        this.balance = 0;
-    }
-
-    public int getBalance(){
+    public int getBalance() {
 
         return this.balance;
     }
 
-    public void addToBalance(int amount){
+    public void depositToBalance(int amount){
 
-        if (amount <= 0){
-            return;
+        if (amount > 0 && amount < 3001) {
+            this.balance += amount;
         }
-        this.balance += amount;
     }
 
-    public void withdrawFromBalance(int amount){
+    public void withdrawFromBalance(int amount) {
 
-        this.balance -= amount;
+        if (amount < this.balance && amount > 0 && amount < 3001) {
+            this.balance -= amount;
+        }
+    }
+
+    public void transfer(Account account, int amount) {
+
+        if (amount > 0 && amount < 1501) {
+            account.receive(amount);
+            this.balance -= amount;
+        }
+    }
+
+    public void receive(int amount){
+
+        this.balance += amount;
     }
 }
