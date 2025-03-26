@@ -16,6 +16,14 @@ public class Account {
 
     public void addToBalance(int amount){
 
+        if (amount <= 0){
+            return;
+        }
         this.balance += amount;
+    }
+
+    public void withdrawFromBalance(int amount){
+
+        this.balance -= amount;
     }
 }
